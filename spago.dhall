@@ -17,6 +17,11 @@ You can edit this file as you like.
   , "transformers"
   , "tuples"
   , "js-uri"
+  , "arrays"
+  , "control"
+  , "foldable-traversable"
+  , "maybe"
+  , "partial"
   ]
 , packages = ./packages.dhall
 , sources = [ "src/**/*.purs", "test/**/*.purs" ]
