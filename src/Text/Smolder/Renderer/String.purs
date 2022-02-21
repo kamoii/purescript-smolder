@@ -20,7 +20,7 @@ import Data.String (length)
 import Data.String.CodeUnits (fromCharArray, toCharArray)
 import Data.Tuple (Tuple(..))
 import Data.Tuple.Nested ((/\))
-import JSURI (encodeURI)
+import JSURI (encodeURIComponent)
 import Partial (crashWith)
 import Partial.Unsafe (unsafePartial)
 import Text.Smolder.Markup (Attr(..), Markup, MarkupM(..), NS(..))
@@ -144,7 +144,7 @@ escape m = fromStream <<< extend escapeS <<< toStream
 escapeAttrValue :: String -> String -> String -> String
 escapeAttrValue tag key value
   | isURLAttr tag key =
-    case encodeURI value of
+    case encodeURIComponent value of
          Nothing -> unsafePartial $ crashWith "Text.Smolder.Renderer.String.escapeAttrValue: cannot encode URL"
          Just x -> x
   | isMIMEAttr tag key  = escape escapeMIMEMap value
